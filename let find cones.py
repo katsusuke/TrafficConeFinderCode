@@ -7,7 +7,7 @@ Created on Wed Oct 26 10:54:27 2016
 
 import numpy as np
 import cv2
-
+import os, sys
 
 def convexHullIsPointingUp(hull):
     print('convexHullIsPointingUp')
@@ -85,7 +85,14 @@ print('step one')
 print('looking for cones')
 print('Load an color image')
 # load in a image
-img = cv2.imread('./images/14.jpg', -1)
+
+if len(sys.argv) != 2:
+    print('Usage: ' + os.path.basename(__file__) + ' <file_name>')
+    exit(1)
+
+filename = sys.argv[1]
+
+img = cv2.imread(filename, -1)
 
 print('Image shape ', img.shape)
 cv2.imshow('image', img)
